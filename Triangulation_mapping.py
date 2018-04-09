@@ -55,28 +55,28 @@ def multiply_alpha(alpha, back):
 
 if __name__ == '__main__':
     window = np.array(cv2.imread('window.jpg')) / 255.0
-    back1 = np.array(cv2.imread('flowers-backA.jpg')) / 255.0
-    back2 = np.array(cv2.imread('flowers-backB.jpg')) / 255.0
-    comp1 = np.array(cv2.imread('flowers-compA.jpg')) / 255.0
-    comp2 = np.array(cv2.imread('flowers-compB.jpg')) / 255.0
+    back1 = np.array(cv2.imread('./pic1/flowers-backA.jpg')) / 255.0
+    back2 = np.array(cv2.imread('./pic1/flowers-backB.jpg')) / 255.0
+    comp1 = np.array(cv2.imread('./pic1/flowers-compA.jpg')) / 255.0
+    comp2 = np.array(cv2.imread('./pic1/flowers-compB.jpg')) / 255.0
     fg, alpha = matting(back1, back2, comp1, comp2)
-    cv2.imwrite('flowers-alpha.jpg', alpha*255.0)
-    cv2.imwrite('flowers-foreground.jpg', fg*255.0)
+    cv2.imwrite('./pic1/flowers-alpha.jpg', alpha*255.0)
+    cv2.imwrite('./pic1/flowers-foreground.jpg', fg*255.0)
     b = multiply_alpha(alpha, window)
     composite = np.clip(fg + b, 0, 1)
     # cv2.imshow('flowers-composite.jpg', composite)
     # cv2.waitKey(0)
-    cv2.imwrite('flowers-composite.jpg', composite*255.0)
+    cv2.imwrite('./pic1/flowers-composite.jpg', composite*255.0)
 
-    back1 = np.array(cv2.imread('leaves-backA.jpg')) / 255.0
-    back2 = np.array(cv2.imread('leaves-backB.jpg')) / 255.0
-    comp1 = np.array(cv2.imread('leaves-compA.jpg')) / 255.0
-    comp2 = np.array(cv2.imread('leaves-compB.jpg')) / 255.0
+    back1 = np.array(cv2.imread('./pic2/leaves-backA.jpg')) / 255.0
+    back2 = np.array(cv2.imread('./pic2/leaves-backB.jpg')) / 255.0
+    comp1 = np.array(cv2.imread('./pic2/leaves-compA.jpg')) / 255.0
+    comp2 = np.array(cv2.imread('./pic2/leaves-compB.jpg')) / 255.0
     fg, alpha = matting(back1, back2, comp1, comp2)
-    cv2.imwrite('leaves-alpha.jpg', alpha*255.0)
-    cv2.imwrite('leaves-foreground.jpg', fg*255.0)
+    cv2.imwrite('./pic2/leaves-alpha.jpg', alpha*255.0)
+    cv2.imwrite('./pic2/leaves-foreground.jpg', fg*255.0)
     b = multiply_alpha(alpha, window)
     composite = np.clip(fg + b, 0, 1)
     # cv2.imshow('leaves-composite.jpg', composite)
     # cv2.waitKey(0)
-    cv2.imwrite('leaves-composite.jpg', composite*255.0)
+    cv2.imwrite('./pic2/leaves-composite.jpg', composite*255.0)
